@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "430102491301",
+    "project_id": "furniture-app-899d1",
+    "storage_bucket": "furniture-app-899d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:430102491301:android:175a9bd9994f664c891d4c",
+        "android_client_info": {
+          "package_name": "kon.ritam.furniture_ar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "430102491301-6vms908pdknb4tol6cb242ghfvrfr0nl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kon.ritam.furniture_ar",
+            "certificate_hash": "a14cb651ffc0f310419581c2d1eb4f46ae944ae5"
+          }
+        },
+        {
+          "client_id": "430102491301-8lp7tekk3kurs7lene5p5stvmfgcr9dk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfXHVp6RLxkxWK05V1QVjP7Ce7aor-umk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "430102491301-8lp7tekk3kurs7lene5p5stvmfgcr9dk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
