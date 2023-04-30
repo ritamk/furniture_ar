@@ -1,6 +1,5 @@
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:furniture_ar/models/furniture_model.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
@@ -16,16 +15,21 @@ class _ArScreenState extends State<ArScreen> {
   ArCoreController? arCoreController;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Custom Object on plane detected'),
-        ),
-        body: ArCoreView(
-          onArCoreViewCreated: _onArCoreViewCreated,
-          enableTapRecognizer: true,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.furnitureModel.name ?? ""),
+      ),
+      body: ArCoreView(
+        type: ArCoreViewType.STANDARDVIEW,
+        onArCoreViewCreated: _onArCoreViewCreated,
+        enableTapRecognizer: true,
+        enablePlaneRenderer: true,
       ),
     );
   }
@@ -37,37 +41,20 @@ class _ArScreenState extends State<ArScreen> {
   }
 
   Future _addSphere(ArCoreHitTestResult hit) async {
-    final moonMaterial = ArCoreMaterial(color: Colors.grey);
+    // final earthMaterial = ArCoreMaterial(
+    //   textureBytes:
+    // );
 
-    final moonShape = ArCoreSphere(
-      materials: [moonMaterial],
-      radius: 0.03,
+    final earthShape = ArCoreReferenceNode(
+      object3DFileName: widget.furnitureModel.modelLink,
+      // objectUrl:
+      //     "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF/Duck.gltf",
+      position: hit.pose.translation,
+      rotation: hit.pose.rotation,
+      scale: vector.Vector3.all(hit.distance * 0.01),
     );
 
-    final moon = ArCoreNode(
-      shape: moonShape,
-      position: vector.Vector3(0.2, 0, 0),
-      rotation: vector.Vector4(0, 0, 0, 0),
-    );
-
-    final ByteData textureBytes = await rootBundle.load('assets/earth.jpg');
-
-    final earthMaterial = ArCoreMaterial(
-        color: const Color.fromARGB(120, 66, 134, 244),
-        textureBytes: textureBytes.buffer.asUint8List());
-
-    final earthShape = ArCoreSphere(
-      materials: [earthMaterial],
-      radius: 0.1,
-    );
-
-    final earth = ArCoreNode(
-        shape: earthShape,
-        children: [moon],
-        position: hit.pose.translation + vector.Vector3(0.0, 0.0, 0.0),
-        rotation: hit.pose.rotation);
-
-    arCoreController?.addArCoreNodeWithAnchor(earth);
+    arCoreController?.addArCoreNodeWithAnchor(earthShape);
   }
 
   void _handleOnPlaneTap(List<ArCoreHitTestResult> hits) {
