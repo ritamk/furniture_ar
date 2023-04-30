@@ -15,7 +15,7 @@ class App extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: mainTheme(),
       home: ref.watch(authStateChangeStreamProvider).value?.uid != null
-          ? HomeScreen()
+          ? const HomeScreen()
           : const AuthScreen(),
     );
   }
