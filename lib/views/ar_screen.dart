@@ -25,7 +25,11 @@ class _ArScreenState extends State<ArScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () => Navigator.of(context).pop(),
+            icon: const Icon(Icons.arrow_back_ios)),
         title: Text(widget.furnitureModel.name ?? ""),
+        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.tune))],
       ),
       body: Stack(
         children: [
