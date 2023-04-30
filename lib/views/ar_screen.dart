@@ -1,10 +1,12 @@
 import 'package:arcore_flutter_plugin/arcore_flutter_plugin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:furniture_ar/models/furniture_model.dart';
 import 'package:vector_math/vector_math_64.dart' as vector;
 
 class ArScreen extends StatefulWidget {
-  const ArScreen({super.key});
+  const ArScreen({super.key, required this.furnitureModel});
+  final FurnitureModel furnitureModel;
 
   @override
   State<ArScreen> createState() => _ArScreenState();
@@ -62,7 +64,7 @@ class _ArScreenState extends State<ArScreen> {
     final earth = ArCoreNode(
         shape: earthShape,
         children: [moon],
-        position: hit.pose.translation + vector.Vector3(0.0, 1.0, 0.0),
+        position: hit.pose.translation + vector.Vector3(0.0, 0.0, 0.0),
         rotation: hit.pose.rotation);
 
     arCoreController?.addArCoreNodeWithAnchor(earth);

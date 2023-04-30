@@ -9,6 +9,7 @@ final StreamProvider<User?> authStateChangeStreamProvider =
     StreamProvider<User?>(
         (ref) => ref.read(authControllerProvider).authStateChanges);
 
-final StateProvider<String?> userUidProvider = StateProvider<String?>((ref) {
-  return ref.read(authControllerProvider).userUid;
-});
+final StateProvider<String?> userUidProvider =
+    StateProvider<String?>((ref) => ref.read(authControllerProvider).userUid);
+
+final StateProvider<int> filterIndexProvider = StateProvider<int>((ref) => 0);
