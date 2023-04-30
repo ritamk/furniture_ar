@@ -41,16 +41,9 @@ class _ArScreenState extends State<ArScreen> {
   }
 
   Future _addSphere(ArCoreHitTestResult hit) async {
-    // final earthMaterial = ArCoreMaterial(
-    //   textureBytes:
-    // );
-
     final earthShape = ArCoreReferenceNode(
-      // object3DFileName: widget.furnitureModel.modelLink,
       objectUrl:
-          // "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/Duck/glTF/Duck.gltf",
           "https://raw.githubusercontent.com/ritamk/furniture_ar/main/assets/scene.gltf",
-      // "https://github.com/KhronosGroup/glTF-Sample-Models/raw/master/2.0/CesiumMan/glTF/CesiumMan.gltf",
       position: hit.pose.translation,
       rotation: hit.pose.rotation,
       // scale: vector.Vector3.all(hit.distance * 0.01),
