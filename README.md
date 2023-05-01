@@ -12,7 +12,7 @@ FurnitureAR is a mobile application that allows users to view/purchase furniture
 
 ## Installation
 
-1. Download the "FurnitureAR <version code>.apk" file from the release/tag section.
+1. Download the "FurnitureAR \<version code\>.apk" file from the release/tag section.
 2. Install the app on your device.
 
 ## Usage
