@@ -32,6 +32,7 @@ class _ArScreenState extends State<ArScreen> {
         actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.tune))],
       ),
       body: Stack(
+        alignment: Alignment.center,
         children: [
           ArCoreView(
             type: ArCoreViewType.STANDARDVIEW,
